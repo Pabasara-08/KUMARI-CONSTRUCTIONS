@@ -291,20 +291,45 @@ kumariproperty@gmail.com
 <div class="contact-form">
 
 
+<form>
 
-<form id="whatsappForm">
+<input type="text" id="name" placeholder="Your Name" required>
 
-    <input type="text" id="name" placeholder="Your Name" required>
+<input type="text" id="phone" placeholder="Phone Number" required>
 
-    <input type="text" id="phone" placeholder="Phone Number" required>
+<textarea id="message" placeholder="Your Message" required></textarea>
 
-    <textarea id="message" placeholder="Your Message" required></textarea>
-
-    <button type="button" onclick="sendWhatsApp()">
-        Send via WhatsApp
-    </button>
+<button type="button" onclick="sendWhatsApp()">
+Send via WhatsApp
+</button>
 
 </form>
+
+<script>
+function sendWhatsApp() {
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const message = document.getElementById("message").value;
+
+    if (!name || !phone || !message) {
+        alert("Please fill all fields.");
+        return;
+    }
+
+    const yourNumber = "94766381028";
+
+    const text =
+        "New Property Inquiry\n\n" +
+        "Name: " + name + "\n" +
+        "Phone: " + phone + "\n" +
+        "Message: " + message;
+
+    const url = "https://wa.me/" + yourNumber + "?text=" + encodeURIComponent(text);
+
+    window.open(url, "_blank");
+}
+</script>
 
 
 </div>
