@@ -292,26 +292,42 @@ kumariproperty@gmail.com
 
 <form id="whatsappForm">
 
-<input
-type="text"
-id="name"
-placeholder="Your Name"
-required>
 
-<input
-type="text"
-id="phone"
-placeholder="Phone Number"
-required>
+<input type="text" id="name" placeholder="Your Name" required>
 
-<textarea
-id="message"
-placeholder="Your Message"
-required></textarea>
+<input type="text" id="phone" placeholder="Phone Number" required>
 
-<button type="submit">
+<textarea id="message" placeholder="Your Message" required></textarea>
 
-Send via WhatsApp
+<button onclick="sendWhatsApp()">Send via WhatsApp</button>
+
+<script>
+function sendWhatsApp() {
+
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+    var message = document.getElementById("message").value;
+
+    if(name == "" || phone == "" || message == ""){
+        alert("Please fill all fields.");
+        return;
+    }
+
+    var yourNumber = "9477XXXXXXX"; // Replace with your WhatsApp number
+
+    var text =
+        "🏡 *New Property Inquiry*%0A%0A" +
+        "👤 Name: " + name + "%0A" +
+        "📞 Phone: " + phone + "%0A" +
+        "💬 Message: " + message;
+
+    var url = "https://wa.me/" + yourNumber + "?text=" + text;
+
+    window.open(url, "_blank");
+}
+</script>
+
+
 
 </button>
 
